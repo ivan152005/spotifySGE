@@ -9,9 +9,10 @@ class Command(BaseCommand):
         usuarios = Usuario.objects.all()
         if not usuarios.exists():
             self.stdout.write(self.style.ERROR("No hay usuarios en la base de datos"))
+
         else:
-            
-            canciones = Cancion.objects.all()
+
+            canciones = Cancion.objects.exclude(album__isnull=True)
             albums_creados = {}
 
             for cancion in canciones:
