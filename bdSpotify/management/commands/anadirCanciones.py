@@ -74,9 +74,7 @@ class Command(BaseCommand):
 ]
         generos = ["Pop", "Rock", "Hip-Hop", "Jazz", "Clásica"]
 
-        if (not Cancion.objects.exists()) :
-
-
+        if not Cancion.objects.exists() :
             for i in range(1,300):
                 fecha_aleatoria = faker.date_time_between(start_date='-20y', end_date='now')
                 fecha_formateada = fecha_aleatoria.strftime('%Y-%m-%d')

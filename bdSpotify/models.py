@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 # Create your models here.
@@ -18,11 +20,20 @@ class Usuario(models.Model):
     def __str__(self):
         return self.email
 
+class Genero(models.Model):
+    id = models.IntegerField(primary_key=True)
+    nombre = models.CharField(max_length=50, null=False, blank=False)
+    descripcion = models.CharField(max_length=500, null=True)
+    fecha_creacion = models.DateField(null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.id} - {self.nombre}'
+
 class Cancion(models.Model):
     titulo = models.CharField(max_length=200)
     artista = models.CharField(max_length=200)
     album = models.CharField(max_length=200, null=True, blank=True)
-    genero = models.CharField(max_length=100, null=True, blank=True)
+    genero = models.ForeignKey(Genero, on_delete=models.CASCADE, null= True, blank=True)
     duracion = models.IntegerField()
     fecha_lanzamiento = models.DateField()
 
@@ -38,3 +49,10 @@ class Lista(models.Model):
 
     def __str__(self):
         return f"{self.nombre} de {self.usuario.email}"
+
+class TablaTemporalGenero(models.Model):
+    id_genero = models.IntegerField()
+    id_cancion = models.IntegerField()
+
+    def __str__(self):
+        return f'id género:{self.id_genero}. id canción{self.id_cancion}'
