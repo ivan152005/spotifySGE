@@ -49,10 +49,3 @@ class Lista(models.Model):
 
     def __str__(self):
         return f"{self.nombre} de {self.usuario.email}"
-
-class TablaTemporalGenero(models.Model):
-    id_genero = models.IntegerField()
-    id_cancion = models.IntegerField()
-
-    def __str__(self):
-        return f'id género:{self.id_genero}. id canción{self.id_cancion}'

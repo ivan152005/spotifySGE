@@ -1,6 +1,6 @@
 from django.core.management import BaseCommand
 
-from bdSpotify.models import Genero, Cancion, TablaTemporalGenero
+from bdSpotify.models import Genero, Cancion
 
 class Command(BaseCommand):
     help = 'Añadir género a canciones'
@@ -12,7 +12,7 @@ class Command(BaseCommand):
             for c in cancion:
                 # Busco el genero por cancion
                 genero = Genero.objects.get(nombre=c.genero)
-                TablaTemporalGenero.objects.create(id_genero=genero.id, id_cancion=c.id)
+                #TablaTemporalGenero.objects.create(id_genero=genero.id, id_cancion=c.id)
 
                 self.stdout.write(self.style.SUCCESS(f'Cancion: {str(c.titulo)}. Genero: {c.genero}'))
                 self.stdout.write(self.style.SUCCESS(f'Tabla temporal añadida con éxito'))

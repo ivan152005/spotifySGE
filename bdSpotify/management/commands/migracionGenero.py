@@ -1,7 +1,7 @@
 from django.core.management import BaseCommand
 
-from bdSpotify.models import Genero, Cancion, TablaTemporalGenero
-
+from bdSpotify.models import Genero, Cancion
+'''
 class Command(BaseCommand):
     help = 'Migrar clave foránea del género'
 
@@ -22,3 +22,4 @@ class Command(BaseCommand):
 
         except Exception as e:
             self.stderr.write(self.style.ERROR(f'Error: {e}'))
+            '''
